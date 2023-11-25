@@ -12,9 +12,10 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { Link, NavLink } from 'react-router-dom';
+import logo from "../../../src/assets/news.png"
 
 
-// import CssBaseline from "@mui/material/CssBaseline";
+
 
 
 
@@ -59,7 +60,7 @@ function Navbar() {
               textDecoration: 'none',
             }}
           >
-            {/* <img  src={logo} alt="" /> */}
+           <Link to="/"> <img className='h-[60px] object-cover' src={logo} alt="logo" /></Link>
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -130,7 +131,7 @@ function Navbar() {
               textDecoration: 'none',
             }}
           >
-            {/* <img  src={logo} alt="" /> */}
+           <Link to='/'> <img className='h-[60px] object-cover'  src={logo} alt="logo" /></Link>
           </Typography>
          
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' },justifyContent: 'center',alignItems:'center' }}>
@@ -148,9 +149,7 @@ function Navbar() {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                 {/* <NavLink activeClassName="active-link"  style={{textDecoration: 'none', color: "white"}} to={`/${page}`}>
-                    {page}
-                    </NavLink> */}
+               
 
                     <NavLink
   to={`/${page}`}

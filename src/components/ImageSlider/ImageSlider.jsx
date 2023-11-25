@@ -2,7 +2,7 @@
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import './ImageSlider.css'; // Create this file for styling
+import './ImageSlider.css'; 
 
 const ImageSlider = () => {
   const settings = {
