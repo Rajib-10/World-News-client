@@ -23,7 +23,7 @@ const visiblePages = [
   "Subscription",
   "Dashboard",
   "My Articles",
-  "Premium Articles ",
+  "Premium Articles",
 ];
 
 function Navbar() {

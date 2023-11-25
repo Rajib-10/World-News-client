@@ -43,7 +43,7 @@ const Register = () => {
     
       updateUserProfile(name,photo)
       .then(()=>{
-        const userInfo = {name,email  }
+        const userInfo = {name,email,photo}
       axiosPublic.post('/users',userInfo)
       .then(res=>{
           console.log(res.data)
