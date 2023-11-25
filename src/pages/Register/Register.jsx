@@ -1,20 +1,21 @@
 import { Button, TextField } from "@mui/material";
 import signup from "../../../src/assets/signup.json";
 import Lottie from "lottie-react";
-import GoogleIcon from "@mui/icons-material/Google";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link,  useNavigate } from "react-router-dom";
 import useAuth from "../../Hook/useAuth";
 import toast, { Toaster } from "react-hot-toast";
+import SocialLogin from "../../components/socialLogin/SocialLogin";
+import useAxiosPublic from "../../Hook/useAxiosPublic";
 
 
 
 const Register = () => {
 
-
+  const axiosPublic = useAxiosPublic()
   const navigate = useNavigate();
-  const location = useLocation();
+  
 
-  const {googleLogin,createUser,updateUserProfile,userLogOut} = useAuth()
+  const {createUser,updateUserProfile,userLogOut} = useAuth()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -42,9 +43,17 @@ const Register = () => {
     
       updateUserProfile(name,photo)
       .then(()=>{
-          toast.success("User Created Successfully.")
+        const userInfo = {name,email  }
+      axiosPublic.post('/users',userInfo)
+      .then(res=>{
+          console.log(res.data)
+          toast.success("User logged in Successfully.");
           userLogOut()
           navigate('/login')
+          
+      })
+          
+         
       })
       
   })
@@ -54,18 +63,7 @@ const Register = () => {
  })
 }
 
-  const handleGoogleLogin = () =>{
-    googleLogin()
-    .then(res=>{
-      toast.success("User logged in Successfully.");
-        navigate(location?.state ? location.state : "/");
-      console.log(res.user)
-    })
-    .catch(error=>{
-      toast.error(`${error.message}`);
-      console.log(error.message)
-    })
-  }
+ 
 
   
 
@@ -126,14 +124,7 @@ const Register = () => {
           <hr className="my-5" />
 
           <div className="px-4">
-            <Button
-              onClick={handleGoogleLogin}
-              variant="outlined"
-              color="secondary"
-              startIcon={<GoogleIcon />}
-            >
-              Google Login
-            </Button>
+           <SocialLogin />
             <p className="pt-4 font-medium">Already have an account? <Link to='/login'><small className="text-[#7B1FA2]">Sing In</small></Link></p>
           </div>
         </div>

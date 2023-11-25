@@ -1,16 +1,16 @@
 import { Button, TextField } from "@mui/material";
 import login from "../../../src/assets/login.json";
 import Lottie from "lottie-react";
-import GoogleIcon from "@mui/icons-material/Google";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hook/useAuth";
 import toast, { Toaster } from "react-hot-toast";
+import SocialLogin from "../../components/socialLogin/SocialLogin";
 const Login = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
 
-  const {googleLogin,signInUser} = useAuth()
+  const {signInUser} = useAuth()
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,18 +30,7 @@ const Login = () => {
       });
   };
 
-  const handleGoogleLogin = () =>{
-    googleLogin()
-    .then(res=>{
-      toast.success("User logged in Successfully.");
-        navigate(location?.state ? location.state : "/");
-      console.log(res.user)
-    })
-    .catch(error=>{
-      toast.error(`${error.message}`);
-      console.log(error.message)
-    })
-  }
+ 
 
   return (
     <div>
@@ -82,14 +71,7 @@ const Login = () => {
           <hr className="my-5" />
 
           <div className="px-4">
-            <Button
-              onClick={handleGoogleLogin}
-              variant="outlined"
-              color="secondary"
-              startIcon={<GoogleIcon />}
-            >
-              Google Login
-            </Button>
+            <SocialLogin />
             <p className="pt-4 font-medium">Do not have an account? <Link to='/register'><small className="text-[#7B1FA2]">Sing Up</small></Link></p>
           </div>
         </div>

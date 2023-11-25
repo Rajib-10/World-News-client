@@ -1,45 +1,48 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import { Link, NavLink } from 'react-router-dom';
-import logo from "../../../src/assets/news.png"
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Menu from "@mui/material/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
+import Container from "@mui/material/Container";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import Tooltip from "@mui/material/Tooltip";
+import MenuItem from "@mui/material/MenuItem";
+import { Link, NavLink } from "react-router-dom";
+import logo from "../../../src/assets/news.png";
+import useAuth from "../../Hook/useAuth";
+import LogoutIcon from "@mui/icons-material/Logout";
+import LoginIcon from "@mui/icons-material/Login";
 
-
-
-
-
-
-
-
-const visiblePages = ['Add Articles', 'All Articles','Subscription','Dashboard','My Articles','Premium Articles '];
-
+const visiblePages = [
+  "Add Articles",
+  "All Articles",
+  "Subscription",
+  "Dashboard",
+  "My Articles",
+  "Premium Articles ",
+];
 
 function Navbar() {
+  const { user, userLogOut } = useAuth();
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
- 
-  const isAuthenticated = true; 
-  const pages = isAuthenticated ? visiblePages : visiblePages.filter(page => page !== 'Dashboard');
-  
+
+  const isAuthenticated = true;
+  const pages = isAuthenticated
+    ? visiblePages
+    : visiblePages.filter((page) => page !== "Dashboard");
+
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
- 
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-
-  
 
   return (
     <AppBar position="static">
@@ -52,18 +55,21 @@ function Navbar() {
             href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
+              display: { xs: "none", md: "flex" },
+              fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
             }}
           >
-           <Link to="/"> <img className='h-[60px] object-cover' src={logo} alt="logo" /></Link>
+            <Link to="/">
+              {" "}
+              <img className="h-[60px] object-cover" src={logo} alt="logo" />
+            </Link>
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -78,43 +84,49 @@ function Navbar() {
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
+                vertical: "bottom",
+                horizontal: "left",
               }}
               keepMounted
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
+                vertical: "top",
+                horizontal: "left",
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none'},
-                textAlign: 'center'
+                display: { xs: "block", md: "none" },
+                textAlign: "center",
               }}
             >
-                <NavLink
-  to="/"
-  className={({ isActive, isPending }) =>
-    isPending ? "pending" : isActive ? "font-medium underline" : ""
-  }
->
-  HOME
-</NavLink>
+              <NavLink
+                to="/"
+                className={({ isActive, isPending }) =>
+                  isPending
+                    ? "pending"
+                    : isActive
+                    ? "font-medium underline"
+                    : ""
+                }
+              >
+                HOME
+              </NavLink>
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  
                   <Typography textAlign="center">
-                    
-                    <NavLink activeClassName="active-link"   style={{textDecoration: 'none'}} to={`/${page}`}>
-                    {page}
+                    <NavLink
+                      activeClassName="active-link"
+                      style={{ textDecoration: "none" }}
+                      to={`/${page}`}
+                    >
+                      {page}
                     </NavLink>
                   </Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-         
+
           <Typography
             variant="h5"
             noWrap
@@ -122,68 +134,82 @@ function Navbar() {
             href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
-              display: { xs: 'flex', md: 'none' },
+              display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: 'monospace',
+              fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
             }}
           >
-           <Link to='/'> <img className='h-[60px] object-cover'  src={logo} alt="logo" /></Link>
+            <Link to="/">
+              {" "}
+              <img className="h-[60px] object-cover" src={logo} alt="logo" />
+            </Link>
           </Typography>
-         
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' },justifyContent: 'center',alignItems:'center' }}>
-          <NavLink
-  to="/"
-  className={({ isActive, isPending }) =>
-    isPending ? "pending" : isActive ? "font-medium underline" : ""
-  }
->
-  HOME
-</NavLink>
+
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", md: "flex" },
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <NavLink
+              to="/"
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "font-medium underline" : ""
+              }
+            >
+              HOME
+            </NavLink>
             {pages.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, color: "white", display: "block" }}
               >
-               
-
-                    <NavLink
-  to={`/${page}`}
-  className={({ isActive, isPending }) =>
-    isPending ? "pending" : isActive ? "font-medium underline" : ""
-  }
->
-  {page}
-</NavLink>
-
-
+                <NavLink
+                  to={`/${page}`}
+                  className={({ isActive, isPending }) =>
+                    isPending
+                      ? "pending"
+                      : isActive
+                      ? "font-medium underline"
+                      : ""
+                  }
+                >
+                  {page}
+                </NavLink>
               </Button>
             ))}
           </Box>
 
-              
-       
-        
 
-          
-         
-         
-         <Link to='/profile'>
 
-         <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="User logo">
-              <IconButton sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-           
-          </Box>
-         </Link>
-       
+          {
+  user ? (
+   <button onClick={()=>userLogOut()}> <LogoutIcon /></button>
+  ) : (
+    <Link to='/login'><LoginIcon /></Link>
+  )
+}
+         
+          <Link to="/profile">
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title={user ? user?.displayName : 'user logo'}>
+                <IconButton sx={{ p: 0 }}>
+                  {
+                    user ? ( <Avatar alt="Remy Sharp" src={user?.photoURL} />) : 
+                    ( <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />)
+                  }
+                 
+                </IconButton>
+              </Tooltip>
+            </Box>
+          </Link>
         </Toolbar>
       </Container>
     </AppBar>
