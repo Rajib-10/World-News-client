@@ -1,3 +1,4 @@
+import ImageSlider from "../../components/ImageSlider/ImageSlider";
 
 
 
@@ -5,7 +6,7 @@
 const Home = () => {
     return (
         <div>
-            home page
+            <ImageSlider />
         </div>
     );
 };
