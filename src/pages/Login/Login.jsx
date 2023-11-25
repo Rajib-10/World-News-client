@@ -10,7 +10,7 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const {googleLogin} = useAuth()
+  const {googleLogin,signInUser} = useAuth()
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,7 +18,16 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    console.log( email, password);
+    signInUser(email, password)
+      .then((result) => {
+        toast.success("User logged in Successfully.");
+        navigate(location?.state ? location.state : "/");
+        console.log(result.user);
+      })
+      .catch((error) => {
+        toast.error(`${error.message}`);
+        console.log(error.message);
+      });
   };
 
   const handleGoogleLogin = () =>{

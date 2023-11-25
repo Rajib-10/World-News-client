@@ -14,17 +14,45 @@ const Register = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const {googleLogin} = useAuth()
+  const {googleLogin,createUser,updateUserProfile,userLogOut} = useAuth()
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const name = e.name.value
-    const email = form.email.value;
-    const password = form.password.value;
-
-    console.log(name, email, password);
-  };
+    e.preventDefault()
+    const form = e.target
+    const photo = form.photo.value
+    const name = form.name.value
+    const email = form.email.value
+    const password = form.password.value
+    
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+      return toast.error("Invalid Email.")
+  }
+  if(password.length <6){
+      return toast.error("password is less than 6 characters")
+  }
+  if(!/[A-Z]/.test(password)){
+      return toast.error("password  don't have a capital letter")
+  }
+  if(!/[!@#$%^&*(),.?":{}|<>]/.test(password)){
+      return toast.error("password  don't have a special character")
+  }
+  
+  createUser(email,password)
+  .then(()=>{
+    
+      updateUserProfile(name,photo)
+      .then(()=>{
+          toast.success("User Created Successfully.")
+          userLogOut()
+          navigate('/login')
+      })
+      
+  })
+ .catch(error=>{
+  toast.error(`${error.message}`) 
+  console.log(error.message)
+ })
+}
 
   const handleGoogleLogin = () =>{
     googleLogin()
