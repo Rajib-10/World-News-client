@@ -3,7 +3,7 @@ import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import { MdDeleteForever } from "react-icons/md";
 import Swal from "sweetalert2";
 import { Button } from "@mui/material";
-import toast, { Toaster } from "react-hot-toast";
+
 
 const AllUser = () => {
   const axiosSecure = useAxiosSecure();
@@ -141,7 +141,7 @@ const AllUser = () => {
           </tbody>
         </table>
       </div>
-      <Toaster />
+      
     </div>
   );
 };
