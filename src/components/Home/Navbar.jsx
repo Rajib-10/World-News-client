@@ -15,7 +15,7 @@ import { Link, NavLink } from "react-router-dom";
 import logo from "../../../src/assets/news.png";
 import useAuth from "../../Hook/useAuth";
 import LogoutIcon from "@mui/icons-material/Logout";
-import LoginIcon from "@mui/icons-material/Login";
+
 
 const visiblePages = [
   "Add Articles",
@@ -191,19 +191,21 @@ function Navbar() {
 
           {
   user ? (
-   <button onClick={()=>userLogOut()}> <LogoutIcon /></button>
+   <button onClick={()=>userLogOut()}><Tooltip title='Log out'><LogoutIcon /></Tooltip> </button>
   ) : (
-    <Link to='/login'><LoginIcon /></Link>
+    <div className="font-bold space-x-2">
+      <Link to='/login'>Login </Link>
+    <Link to='/register'>Register </Link>
+    </div>
   )
 }
          
           <Link to="/profile">
             <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title={user ? user?.displayName : 'user logo'}>
+              <Tooltip title={user && user?.displayName }>
                 <IconButton sx={{ p: 0 }}>
                   {
-                    user ? ( <Avatar alt="Remy Sharp" src={user?.photoURL} />) : 
-                    ( <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />)
+                    user && ( <Avatar alt="Remy Sharp" src={user?.photoURL} />) 
                   }
                  
                 </IconButton>
