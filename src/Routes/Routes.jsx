@@ -15,6 +15,8 @@ import Dashboard from "../layout/Dashboard";
 import AllUser from "../pages/Dashboard/AllUser/AllUser";
 import AllArticle from "../pages/Dashboard/AllArticles/AllArticle";
 import AddPublisher from "../pages/Dashboard/AddPublisher/AddPublisher";
+import ArticleDetails from "../pages/ArticleDetails/ArticleDetails";
+import UpdateArticle from "../pages/UpdateArticle/UpdateArticle";
 
 export const router = createBrowserRouter([
   {
@@ -59,8 +61,17 @@ export const router = createBrowserRouter([
         element: <MyArticles />,
       },
       {
+        path: '/articleDetails/:id',
+        element: <ArticleDetails />
+        
+      },
+      {
         path: "/Premium Articles",
         element: <PremiumArticles />,
+      },
+      {
+        path: "/updateArticle/:id",
+        element: <UpdateArticle />
       },
       {
         path: "/Dashboard",

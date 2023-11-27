@@ -2,20 +2,31 @@ import { useState } from "react";
 import { Button, TextField } from "@mui/material";
 import Select from "react-select";
 import usePublisher from "../../Hook/usePublisher";
-import useAuth from "../../Hook/useAuth";
-import moment from "moment";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
+import { useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
 
 const image_hosting_key = '6ca08b587b375113f32a2be549ed3bf0';
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
-const AddArticles = () => {
+const UpdateArticle = () => {
   const axiosPublic = useAxiosPublic()
   const axiosSecure = useAxiosSecure()
-  const { user } = useAuth();
+  const {id} = useParams()
+  const { data: articleUpdate = {} } = useQuery({
+    queryKey: ["articleUpdate", { id }],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/articles");
+      const article = res.data.find((item) => item._id === id);
+      return article;
+    },
+  });
+
+  
+
   const [publishers] = usePublisher();
   const [selectedPublisher, setSelectedPublisher] = useState(null);
 
@@ -46,15 +57,11 @@ const AddArticles = () => {
     const form = e.target;
     const title = form.title.value;
     const description = form.description.value;
-    const email = user?.email
-    const name = user?.displayName
-    const authorPhoto = user?.photoURL
-    const date = moment().format("MMM Do YY");
     const publisher = selectedPublisher ? selectedPublisher.value : null;
     const tags = selectedTags.map((tag) => tag.value);
     const photo = form.photo.files[0];
    
-
+console.log(title,description,publisher,tags,photo)
    const formData = new FormData();
     formData.append('image', photo);
 
@@ -66,14 +73,14 @@ const AddArticles = () => {
 
     console.log(res.data);
     if(res.data.success){
-      const addArticle = {title,description,email,name,authorPhoto,date,publisher,tags,image: res.data.data.display_url}
+      const updateArticle = {title,description,publisher,tags,image: res.data.data.display_url}
       
-     const response = await axiosSecure.post("/articles",addArticle )
+     const response = await axiosSecure.patch(`/articles/${id}`,updateArticle )
       console.log(response.data)
-      if(response.data.insertedId){
+      if(response.data.modifiedCount>0){
           form.reset()
           Swal.fire({
-              title: "Add Article successfully.",
+              title: " Article updated successfully.",
               showClass: {
                 popup: `
                   animate__animated
@@ -96,10 +103,11 @@ const AddArticles = () => {
 
   return (
     <div className="my-10">
-      <h1 className="text-3xl text-center text-[#7B1FA2]">Add Articles</h1>
+      <h1 className="text-3xl text-center text-[#7B1FA2]">Update Article</h1>
       <div className="flex justify-center items-center h-[70vh]">
         <form style={{ width: "50%" }} onSubmit={handleSubmit}>
           <TextField
+            defaultValue={articleUpdate.title || ""}
             fullWidth
             name="title"
             label="Title"
@@ -108,8 +116,10 @@ const AddArticles = () => {
             sx={{ margin: "20px" }}
           />
           <br />
+          
           <TextField
             fullWidth
+            defaultValue={articleUpdate?.description || ""}
             name="description"
             label="Description"
             type="text"
@@ -140,6 +150,7 @@ const AddArticles = () => {
           </div>
 
           <input
+            
             type="file"
             name="photo"
             className="file-input file-input-bordered w-full max-w-xs ml-5"
@@ -161,4 +172,4 @@ const AddArticles = () => {
   );
 };
 
-export default AddArticles;
+export default UpdateArticle;
