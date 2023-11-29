@@ -37,6 +37,10 @@ const Register = () => {
   if(!/[!@#$%^&*(),.?":{}|<>]/.test(password)){
       return toast.error("password  don't have a special character")
   }
+  if(!/[0-9]/.test(password)){
+    return toast.error("password  don't have a numeric character")
+}
+  
   
   createUser(email,password)
   .then(()=>{
@@ -73,9 +77,9 @@ const Register = () => {
         Register Now
       </h1>
 
-      <div className="flex flex-row-reverse justify-center items-center">
-        <div className="w-1/2  p-8">
-          <form style={{ width: "70%" }} onSubmit={handleSubmit}>
+      <div className="flex flex-col md:flex-row-reverse justify-center items-center ">
+        <div className="lg:w-1/2  p-8">
+          <form className="w-[90%] lg:w-[70%]" onSubmit={handleSubmit}>
             <TextField
               fullWidth
               name="photo"
@@ -128,7 +132,7 @@ const Register = () => {
             <p className="pt-4 font-medium">Already have an account? <Link to='/login'><small className="text-[#7B1FA2]">Sing In</small></Link></p>
           </div>
         </div>
-        <div className="w-1/2">
+        <div className="lg:w-1/2">
           <Lottie className="h-[70vh]" animationData={signup} loop={true} />
         </div>
       </div>

@@ -5,8 +5,8 @@ import { FaUser } from "react-icons/fa";
 
 const Dashboard = () => {
   return (
-    <div className="flex">
-      <div className="w-64 min-h-screen bg-[#7F66DB] text-white p-4 ">
+    <div className="flex flex-col lg:flex-row">
+      <div className="lg:w-64 lg:min-h-screen bg-[#7F66DB] text-white p-4 ">
         <ul className="menu p-4 space-y-4">
           <li>
             <NavLink
@@ -51,7 +51,7 @@ const Dashboard = () => {
           </li>
         </ul>
       </div>
-      <div className="flex-1 p-10">
+      <div className="flex-1 lg:p-10">
         <Outlet />
       </div>
     </div>

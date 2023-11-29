@@ -16,14 +16,14 @@ const UpdateProfile = () => {
     const photo = form.photo.value;
     const name = form.name.value;
 
-    updateUserProfile(name,photo)
-    .then(()=>{
-      toast.success("User profile updated successfully")
-      navigate('/profile')
-    })
-    .catch(err=>{
-      toast.error(`${err.message}`) 
-    })
+    updateUserProfile(name, photo)
+      .then(() => {
+        toast.success("User profile updated successfully");
+        navigate("/profile");
+      })
+      .catch((err) => {
+        toast.error(`${err.message}`);
+      });
   };
 
   return (
@@ -32,9 +32,9 @@ const UpdateProfile = () => {
         Update Profile
       </h1>
 
-      <div className="flex flex-row-reverse justify-center items-center">
-        <div className="w-1/2  p-8">
-          <form style={{ width: "70%" }} onSubmit={handleSubmit}>
+      <div className="flex flex-col md:flex-row-reverse justify-center items-center">
+        <div className="lg:w-1/2  lg:p-8">
+          <form className="w-full lg:w-[70%]" onSubmit={handleSubmit}>
             <TextField
               defaultValue={user?.photoURL}
               fullWidth
@@ -78,7 +78,7 @@ const UpdateProfile = () => {
             </Button>
           </form>
         </div>
-        <div className="w-1/2">
+        <div className="lg:w-1/2">
           <Lottie className="h-[70vh]" animationData={update} loop={true} />
         </div>
       </div>

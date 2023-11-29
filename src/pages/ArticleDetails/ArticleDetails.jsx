@@ -21,7 +21,7 @@ const ArticleDetails = () => {
       <div className="flex justify-center w-60% mx-auto items-center">
         <div className="relative flex  flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
           <div className="relative m-0 overflow-hidden text-gray-700 bg-transparent rounded-none shadow-none bg-clip-border">
-            <img className="w-full h-[300px] object-cover p-4"
+            <img className="w-[500px] h-[500px]  object-cover p-4 mx-auto rounded-xl"
               src={articleDetails?.image}
               alt="ui/ux review check"
             />

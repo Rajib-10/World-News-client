@@ -17,6 +17,8 @@ import AllArticle from "../pages/Dashboard/AllArticles/AllArticle";
 import AddPublisher from "../pages/Dashboard/AddPublisher/AddPublisher";
 import ArticleDetails from "../pages/ArticleDetails/ArticleDetails";
 import UpdateArticle from "../pages/UpdateArticle/UpdateArticle";
+import PrivateRouter from "./PrivateRouter/PrivateRouter";
+import Payment from "../pages/Payment/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -26,7 +28,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: <Home />
       },
       {
         path: "/login",
@@ -38,7 +40,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <MyProfile />,
+        element: <PrivateRouter><MyProfile /></PrivateRouter>,
       },
       {
         path: "/update-profile",
@@ -46,7 +48,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/Add Articles",
-        element: <AddArticles />,
+        element: <PrivateRouter><AddArticles /></PrivateRouter>
       },
       {
         path: "/All Articles",
@@ -54,28 +56,32 @@ export const router = createBrowserRouter([
       },
       {
         path: "/Subscription",
-        element: <Subscription />,
+        element: <PrivateRouter><Subscription /></PrivateRouter>,
       },
       {
         path: "/My Articles",
-        element: <MyArticles />,
+        element: <PrivateRouter><MyArticles /></PrivateRouter>,
       },
       {
         path: '/articleDetails/:id',
-        element: <ArticleDetails />
+        element: <PrivateRouter><ArticleDetails /></PrivateRouter>
         
       },
       {
         path: "/Premium Articles",
-        element: <PremiumArticles />,
+        element: <PrivateRouter><PremiumArticles /></PrivateRouter>,
       },
       {
         path: "/updateArticle/:id",
         element: <UpdateArticle />
       },
       {
+        path: '/payment',
+        element: <Payment />
+      },
+      {
         path: "/Dashboard",
-        element: <Dashboard />,
+        element: <PrivateRouter><Dashboard /></PrivateRouter>,
         children: [
           {
             path: "/Dashboard/allUser",

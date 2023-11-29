@@ -145,8 +145,8 @@ const AllArticleCard = ({ article, refetch }) => {
   return (
     <div>
       <div className="relative flex w-full  flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center gap-1">
+        <div className="flex justify-between items-center flex-col lg:flex-row">
+          <div className="flex items-center  gap-1">
             <Avatar alt="Remy Sharp" src={authorPhoto} />
             <h1>{name}</h1>
           </div>
@@ -169,14 +169,14 @@ const AllArticleCard = ({ article, refetch }) => {
         <div className="p-6">
           <div className="flex items-center justify-between mb-3">
             <h5 className="block font-sans text-xl antialiased font-medium leading-snug tracking-normal text-blue-gray-900">
-              {title}
+              {title.slice(0,25)}
             </h5>
             <p className="flex items-center gap-1.5 font-sans text-base font-normal leading-relaxed text-blue-gray-900 antialiased">
               {date}
             </p>
           </div>
           <p className="block font-sans text-base antialiased font-light leading-relaxed text-gray-700">
-            {description}
+            {description.slice(0,90)}
           </p>
 
           <div className="flex justify-between items-center">

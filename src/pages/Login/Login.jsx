@@ -38,9 +38,9 @@ const Login = () => {
         Login Now
       </h1>
 
-      <div className="flex justify-center items-center">
-        <div className="w-1/2  border-2 p-8">
-          <form style={{ width: "70%" }} onSubmit={handleSubmit}>
+      <div className="flex justify-center items-center flex-col md:flex-row">
+        <div className="md:w-1/2   p-8">
+          <form className="w-[90%] lg:w-[70%]" onSubmit={handleSubmit}>
             <TextField
               fullWidth
               name="email"
@@ -75,7 +75,7 @@ const Login = () => {
             <p className="pt-4 font-medium">Do not have an account? <Link to='/register'><small className="text-[#7B1FA2]">Sing Up</small></Link></p>
           </div>
         </div>
-        <div className="w-1/2">
+        <div className="md:w-1/2">
           <Lottie className="h-[70vh]" animationData={login} loop={true} />
         </div>
       </div>

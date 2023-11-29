@@ -98,7 +98,7 @@ const MyArticles = () => {
                   <h1 className="font-medium">{item?.status}</h1>
                   <p className="text-red-500">{item?.message}</p>
                 </div>: "Approved"}</td>
-                <td className="px-6 py-4">{item?.isPremium ? "True" : "False"}</td>
+                <td className="px-6 py-4">{item?.isPremium ? "Yes" : "No"}</td>
                 <td className="px-6 py-4">
               <Link to={`/articleDetails/${item._id}`}>
               <Tooltip title="Article Details">

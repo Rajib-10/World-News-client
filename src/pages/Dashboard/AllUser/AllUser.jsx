@@ -69,8 +69,8 @@ const AllUser = () => {
   };
 
   return (
-    <div className="text-3xl font-medium text-right text-[#7B1FA2] ">
-      Total Users: {allUsers.length}
+    <div className="text-3xl font-medium lg:text-right text-[#7B1FA2] ">
+      Total Users: {allUsers?.length}
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-3">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">

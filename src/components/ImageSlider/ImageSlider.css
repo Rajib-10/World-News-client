@@ -4,16 +4,14 @@
   
   .text-overlay {
     position: absolute;
-    top: 50%;
-    left: 10%;
-    /* transform: translate(-50%, -50%);
-    text-align: center; */
-    color: white; /* Customize text color */
+    top: 30%;
+    left: 2%;
+    
+    color:  slateblue; 
   }
   
   .text-overlay h2 {
-    font-family: 'Your Font Here', sans-serif; /* Specify your custom font */
-    font-size: 2rem; /* Adjust font size */
+    font-size: 2rem; 
     margin-bottom: 0.5rem;
   }
   

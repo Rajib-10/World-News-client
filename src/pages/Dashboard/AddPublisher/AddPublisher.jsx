@@ -66,7 +66,7 @@ const AddPublisher = () => {
       </h1>
 
       <div className="flex justify-center">
-      <form  style={{ width: "70%" }} onSubmit={handleSubmit}>
+      <form  className="w-[80%] lg:w-[50%]" onSubmit={handleSubmit}>
         <TextField
           fullWidth
           name="Name"
