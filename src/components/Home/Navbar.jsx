@@ -52,7 +52,7 @@ function Navbar() {
 
   return (
     <AppBar position="static">
-      <Container maxWidth="xl">
+      <Container maxWidth="1280">
         <Toolbar disableGutters>
           <Typography
             variant="h6"

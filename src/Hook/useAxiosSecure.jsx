@@ -2,14 +2,13 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import useAuth from "./useAuth";
 
-
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://world-news-server-one.vercel.app",
 });
 
 const useAxiosSecure = () => {
   const navigate = useNavigate();
-  const { logOut } = useAuth()
+  const { logOut } = useAuth();
   // request interceptor
   axiosSecure.interceptors.request.use(
     (config) => {
