@@ -50,7 +50,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/update-profile",
-        element: <UpdateProfile />,
+        element: <PrivateRouter><UpdateProfile /></PrivateRouter>,
       },
       {
         path: "/Add Articles",
@@ -98,11 +98,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/updateArticle/:id",
-        element: <UpdateArticle />,
+        element: <PrivateRouter><UpdateArticle /></PrivateRouter>,
       },
       {
         path: "/payment",
-        element: <Payment />,
+        element: <PrivateRouter><Payment /></PrivateRouter>,
       },
       {
         path: "/Dashboard",
@@ -114,7 +114,7 @@ export const router = createBrowserRouter([
         children: [
           {
             path: "/Dashboard",
-            element:<DashboardHome />
+            element:<AdminRoute><DashboardHome /></AdminRoute>
           },
 
           {

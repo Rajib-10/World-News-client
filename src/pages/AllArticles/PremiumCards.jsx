@@ -20,7 +20,7 @@ const PremiumCards = ({article}) => {
     };
     return (
         <div>
-      <div className="group relative flex flex-col text-gray-700 bg-blue-50 shadow-md  rounded-xl bg-clip-border">
+      <div className="group relative flex flex-col text-gray-700 bg-blue-100 shadow-md  rounded-xl bg-clip-border">
         
       <h1 className="text-violet-700 text-xl font-bold absolute  right-3 -top-2">
             premium

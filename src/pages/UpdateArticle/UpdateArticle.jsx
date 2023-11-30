@@ -105,7 +105,7 @@ console.log(title,description,publisher,tags,photo)
     <div className="my-10">
       <h1 className="text-3xl text-center text-[#7B1FA2]">Update Article</h1>
       <div className="flex justify-center items-center h-[70vh]">
-        <form style={{ width: "50%" }} onSubmit={handleSubmit}>
+        <form className="w-[70%] md:w-[50%]" onSubmit={handleSubmit}>
           <TextField
             defaultValue={articleUpdate.title || ""}
             fullWidth

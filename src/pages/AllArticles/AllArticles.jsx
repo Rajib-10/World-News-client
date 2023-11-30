@@ -9,19 +9,16 @@ const AllArticles = () => {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const axiosPublic = useAxiosPublic();
+  
   const { data: articles = [], refetch } = useQuery({
-    queryKey: ["articles", "premiumArticle", loading],
+    queryKey: ["articles", loading],
     queryFn: async () => {
       const res = await axiosPublic.get(`/articles?search=${search}`);
 
-      const premiumArticles = res.data.filter(
-        (item) => item.status === "approved" && item.isPremium === true
-      );
-      const allArticle = res.data.filter(
-        (item) => item.status === "approved" && item.isPremium !== true
-      );
+      
       setLoading(false);
-      return { allArticle, premiumArticles };
+     
+      return res.data;
     },
   });
 
@@ -72,12 +69,16 @@ const AllArticles = () => {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {articles?.allArticle?.map((article) => (
-            <AllCard key={article._id} article={article} />
-          ))}
-          {articles?.premiumArticles?.map((article) => (
-            <PremiumCards key={article._id} article={article} />
-          ))}
+          {articles?.map((article) =>
+            article.status === "approved" && article.isPremium === true ? (
+              <PremiumCards key={article._id} article={article} />
+            ) : (
+              article.status === "approved" &&
+              article.isPremium !== true && (
+                <AllCard key={article._id} article={article} />
+              )
+            )
+          )}
         </div>
       )}
     </div>

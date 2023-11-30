@@ -98,7 +98,7 @@ const AddArticles = () => {
     <div className="my-10">
       <h1 className="text-3xl text-center text-[#7B1FA2]">Add Articles</h1>
       <div className="flex justify-center items-center h-[70vh]">
-        <form className="w-[80%] lg:w-[50%]" onSubmit={handleSubmit}>
+        <form className="w-[70%] lg:w-[50%]" onSubmit={handleSubmit}>
           <TextField
             fullWidth
             name="title"

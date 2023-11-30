@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../Hook/useAuth";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import Chart from "react-google-charts";
+import PieChart from "./PieChart";
 
 const DashboardHome = () => {
   const { user } = useAuth();
@@ -34,8 +35,8 @@ const DashboardHome = () => {
 
   return (
     <div>
-      <h1 className="text-2xl text-[#7B1FA2]">
-        Hey <span className="text-3xl font-bold">{user?.displayName} </span>warm
+      <h1 className="text-xl md:text-2xl text-[#7B1FA2]">
+        Hey <span className="text-xl md:text-3xl font-bold">{user?.displayName} </span>warm
         Welcome to Dashboard
       </h1>
 
@@ -77,7 +78,7 @@ const DashboardHome = () => {
       </section>
 
       <div className="flex justify-around items-center flex-col lg:flex-row">
-        <div className="w-1/2">
+        <div className="w-full md:w-1/2">
           <Chart
             chartType="Bar"
             data={chartData}
@@ -87,7 +88,7 @@ const DashboardHome = () => {
           ></Chart>
         </div>
 
-        <div className="w-1/2">
+        <div className="w-full md:w-1/2">
           <Chart
             chartType="LineChart"
             data={chartData}
@@ -97,6 +98,7 @@ const DashboardHome = () => {
           ></Chart>
         </div>
       </div>
+      <PieChart />
     </div>
   );
 };

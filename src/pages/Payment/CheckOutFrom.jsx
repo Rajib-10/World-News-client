@@ -97,7 +97,7 @@ const CheckOutForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <CardElement
-      className="w-[50%] mx-auto mt-20"
+      className="w-full md:w-[50%] mx-auto mt-20"
         options={{
           style: {
             base: {
@@ -113,7 +113,7 @@ const CheckOutForm = () => {
           },
         }}
       />
-     <div className="ml-80">
+     <div className="ml-4 md:ml-48 lg:ml-80">
      <button className="p-2 bg-violet-700 text-white my-4 rounded-lg" type="submit" disabled={!stripe || !clientSecret}>
         Pay
       </button>
