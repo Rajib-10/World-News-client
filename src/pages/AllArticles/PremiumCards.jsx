@@ -2,9 +2,11 @@
 
 import { Link } from "react-router-dom";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
+import useAuth from "../../Hook/useAuth";
 
 
 const PremiumCards = ({article}) => {
+  const {user} = useAuth()
     const axiosPublic = useAxiosPublic();
     const { title, image, publisher, description, _id } = article || {};
   
@@ -43,9 +45,10 @@ const PremiumCards = ({article}) => {
           </p>
         </div>
         <div className="p-6 pt-0">
-        <Link to={`/articleDetails/${_id}`}>
+        <Link to={user?.isPremium ? `/articleDetails/${_id}` : ''}>
             
             <button
+            disabled={!user?.isPremium}
               onClick={()=>handleView(_id)}
               className="block bg-[#9458AE] text-white w-full select-none rounded-lg bg-blue-gray-900/10 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
               type="button"

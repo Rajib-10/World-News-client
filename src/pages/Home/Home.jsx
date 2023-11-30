@@ -12,6 +12,7 @@ import useAuth from "../../Hook/useAuth"
 import { Link } from "react-router-dom";
 
 
+
 const style = {
     position: 'absolute',
     top: '50%',
@@ -42,14 +43,7 @@ const Home = () => {
     
         return () => clearTimeout(timerId);
     
-        // setTimeout(() => {
-        //   handleOpen();
-      
-        //   // Close the modal after another 10 seconds
-        //   setTimeout(() => {
-        //     handleClose();
-        //   }, 10000);
-        // }, 10000);
+        
     
     
       }, []);
@@ -102,7 +96,7 @@ const Home = () => {
         </Box>
       </Modal>
       
-           
+          
         </div>
     );
 };
