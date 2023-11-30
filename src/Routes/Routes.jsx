@@ -19,6 +19,8 @@ import ArticleDetails from "../pages/ArticleDetails/ArticleDetails";
 import UpdateArticle from "../pages/UpdateArticle/UpdateArticle";
 import PrivateRouter from "./PrivateRouter/PrivateRouter";
 import Payment from "../pages/Payment/Payment";
+import AdminRoute from "./PrivateRouter/AdminRoute";
+import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
 
 export const router = createBrowserRouter([
   {
@@ -28,7 +30,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />
+        element: <Home />,
       },
       {
         path: "/login",
@@ -40,7 +42,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <PrivateRouter><MyProfile /></PrivateRouter>,
+        element: (
+          <PrivateRouter>
+            <MyProfile />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/update-profile",
@@ -48,7 +54,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/Add Articles",
-        element: <PrivateRouter><AddArticles /></PrivateRouter>
+        element: (
+          <PrivateRouter>
+            <AddArticles />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/All Articles",
@@ -56,44 +66,68 @@ export const router = createBrowserRouter([
       },
       {
         path: "/Subscription",
-        element: <PrivateRouter><Subscription /></PrivateRouter>,
+        element: (
+          <PrivateRouter>
+            <Subscription />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/My Articles",
-        element: <PrivateRouter><MyArticles /></PrivateRouter>,
+        element: (
+          <PrivateRouter>
+            <MyArticles />
+          </PrivateRouter>
+        ),
       },
       {
-        path: '/articleDetails/:id',
-        element: <PrivateRouter><ArticleDetails /></PrivateRouter>
-        
+        path: "/articleDetails/:id",
+        element: (
+          <PrivateRouter>
+            <ArticleDetails />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/Premium Articles",
-        element: <PrivateRouter><PremiumArticles /></PrivateRouter>,
+        element: (
+          <PrivateRouter>
+            <PremiumArticles />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/updateArticle/:id",
-        element: <UpdateArticle />
+        element: <UpdateArticle />,
       },
       {
-        path: '/payment',
-        element: <Payment />
+        path: "/payment",
+        element: <Payment />,
       },
       {
         path: "/Dashboard",
-        element: <PrivateRouter><Dashboard /></PrivateRouter>,
+        element: (
+          <PrivateRouter>
+            <Dashboard />
+          </PrivateRouter>
+        ),
         children: [
           {
-            path: "/Dashboard/allUser",
-            element: <AllUser />,
+            path: "/Dashboard",
+            element:<DashboardHome />
+          },
+
+          {
+            path: "/Dashboard/allUsers",
+            element: <AdminRoute><AllUser /></AdminRoute>,
           },
           {
             path: "/Dashboard/allArticle",
-            element: <AllArticle />,
+            element: <AdminRoute><AllArticle /></AdminRoute>,
           },
           {
             path: "/Dashboard/addPublisher",
-            element: <AddPublisher />,
+            element: <AdminRoute><AddPublisher /></AdminRoute>,
           },
         ],
       },

@@ -15,6 +15,7 @@ import { Link, NavLink } from "react-router-dom";
 import logo from "../../../src/assets/news.png";
 import useAuth from "../../Hook/useAuth";
 import LogoutIcon from "@mui/icons-material/Logout";
+import useAdmin from "../../Hook/useAdmin";
 
 
 const visiblePages = [
@@ -28,13 +29,18 @@ const visiblePages = [
 
 function Navbar() {
   const { user, userLogOut } = useAuth();
+  const [isAdmin] = useAdmin()
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
-  const isAuthenticated = true;
+  
+  const isAuthenticated = user && isAdmin
+  
   const pages = isAuthenticated
-    ? visiblePages
-    : visiblePages.filter((page) => page !== "Dashboard");
+  ? visiblePages
+  : user
+  ? visiblePages.filter((page) => page !== "Dashboard")
+  : [];
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);

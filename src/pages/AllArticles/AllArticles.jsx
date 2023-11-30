@@ -3,13 +3,14 @@ import useAxiosPublic from "../../Hook/useAxiosPublic";
 import AllCard from "./AllCard";
 import PremiumCards from "./PremiumCards";
 import { useState } from "react";
-
+import { BallTriangle } from "react-loader-spinner";
 
 const AllArticles = () => {
+  const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const axiosPublic = useAxiosPublic();
   const { data: articles = [], refetch } = useQuery({
-    queryKey: ["articles", "premiumArticle"],
+    queryKey: ["articles", "premiumArticle", loading],
     queryFn: async () => {
       const res = await axiosPublic.get(`/articles?search=${search}`);
 
@@ -19,6 +20,7 @@ const AllArticles = () => {
       const allArticle = res.data.filter(
         (item) => item.status === "approved" && item.isPremium !== true
       );
+      setLoading(false);
       return { allArticle, premiumArticles };
     },
   });
@@ -27,17 +29,12 @@ const AllArticles = () => {
     refetch();
   };
 
-
-
-
   return (
     <div className="my-10">
       <div className="flex justify-between my-6 flex-col md:flex-row">
         <h1 className="text-3xl text-center text-[#7B1FA2] px-10">
           All Articles
         </h1>
-        
-       
 
         <div className="relative flex h-10 w-full min-w-[200px] max-w-[24rem]">
           <input
@@ -60,14 +57,29 @@ const AllArticles = () => {
           </label>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-        {articles?.allArticle?.map((article) => (
-          <AllCard key={article._id} article={article} />
-        ))}
-        {articles?.premiumArticles?.map((article) => (
-          <PremiumCards key={article._id} article={article} />
-        ))}
-      </div>
+      {loading ? (
+        <div className="flex justify-center items-center h-[70vh]">
+          <BallTriangle
+            height={100}
+            width={100}
+            radius={5}
+            color="#7B1FA2"
+            ariaLabel="ball-triangle-loading"
+            wrapperClass={{}}
+            wrapperStyle=""
+            visible={true}
+          />
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {articles?.allArticle?.map((article) => (
+            <AllCard key={article._id} article={article} />
+          ))}
+          {articles?.premiumArticles?.map((article) => (
+            <PremiumCards key={article._id} article={article} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

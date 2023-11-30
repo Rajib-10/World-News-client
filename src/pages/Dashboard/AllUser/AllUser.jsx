@@ -3,14 +3,18 @@ import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import { MdDeleteForever } from "react-icons/md";
 import Swal from "sweetalert2";
 import { Button } from "@mui/material";
+import { useState } from "react";
+import { BallTriangle } from "react-loader-spinner";
 
 
 const AllUser = () => {
+  const [loading,setLoading] = useState(true)
   const axiosSecure = useAxiosSecure();
-  const { data: allUsers = [], refetch } = useQuery({
+  const { data:users = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const res = await axiosSecure.get("/users");
+      setLoading(false)
       return res.data;
     },
   });
@@ -70,8 +74,26 @@ const AllUser = () => {
 
   return (
     <div className="text-3xl font-medium lg:text-right text-[#7B1FA2] ">
-      Total Users: {allUsers?.length}
-      <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-3">
+      Total Users: {users?.length}
+      {
+        loading ? 
+
+        <div className="flex justify-center items-center h-[50vh]">
+        <BallTriangle
+          height={100}
+          width={100}
+          radius={5}
+          color="#7B1FA2"
+          ariaLabel="ball-triangle-loading"
+          wrapperClass={{}}
+          wrapperStyle=""
+          visible={true}
+        />
+      </div>
+
+        :
+
+        <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-3">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
@@ -93,7 +115,7 @@ const AllUser = () => {
             </tr>
           </thead>
           <tbody>
-            {allUsers?.map((user) => (
+            {users?.map((user) => (
               <tr
                 key={user._id}
                 className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
@@ -117,7 +139,7 @@ const AllUser = () => {
                 <td className="px-6 py-4">{user?.name}</td>
                 <td className="px-6 py-4">{user?.email}</td>
                 <td className="px-6 py-4">
-                  {user?.role === "admin" ? (
+                  {user?.role === "admin" ? ( 
                     "Admin"
                   ) : (
                     <Button
@@ -141,6 +163,9 @@ const AllUser = () => {
           </tbody>
         </table>
       </div>
+
+      }
+      
       
     </div>
   );

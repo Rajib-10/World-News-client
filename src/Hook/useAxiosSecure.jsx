@@ -8,20 +8,20 @@ const axiosSecure = axios.create({
 });
 
 const useAxiosSecure = () => {
-  // const navigate = useNavigate();
-  // const { logOut } = useAuth()
-  // // request interceptor
-  // axiosSecure.interceptors.request.use(
-  //   (config) => {
-  //     const token = localStorage.getItem("access-token");
-  //     console.log("stop by interceptor", token);
-  //     config.headers.authorization = `Bearer ${token}`;
-  //     return config;
-  //   },
-  //   function (error) {
-  //     return Promise.reject(error);
-  //   }
-  // );
+  const navigate = useNavigate();
+  const { logOut } = useAuth()
+  // request interceptor
+  axiosSecure.interceptors.request.use(
+    (config) => {
+      const token = localStorage.getItem("access-token");
+      console.log("stop by interceptor", token);
+      config.headers.authorization = `Bearer ${token}`;
+      return config;
+    },
+    function (error) {
+      return Promise.reject(error);
+    }
+  );
 
   // // 401 and 403 interceptor
 
