@@ -8,13 +8,13 @@ import { useState } from "react";
 import { BallTriangle } from "react-loader-spinner";
 
 const ImageSlider = () => {
-  const [loading,setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
   const axiosPublic = useAxiosPublic();
   const { data: topViews = [] } = useQuery({
     queryKey: ["topViews"],
     queryFn: async () => {
       const res = await axiosPublic.get("/articles/top-views");
-      setLoading(false)
+      setLoading(false);
       return res.data;
     },
   });
@@ -30,52 +30,40 @@ const ImageSlider = () => {
   };
 
   return (
-   <>
-   {
-    loading ? 
-
-    <div className="flex justify-center items-center h-[30vh]">
-        <BallTriangle
-          height={100}
-          width={100}
-          radius={5}
-          color="#7B1FA2"
-          ariaLabel="ball-triangle-loading"
-          wrapperClass={{}}
-          wrapperStyle=""
-          visible={true}
-        />
-      </div>
-    
-    :
-
-    <Slider className="w-[95%] mx-auto" {...settings}>
-
-    {
-      loading
-    }
-    
-    {topViews?.map((item) => (
-      <div key={item._id} className="slide">
-        <img
-          className="w-full mx-auto h-[80vh] object-cover "
-          src={item.image}
-          alt="Slide 2"
-        />
-        <div className="text-overlay ">
-          <h2 className="text-4xl font-bold">{item.title}</h2>
-          <p className="text-2xl font-bold">{item.publisher}</p>
+    <>
+      {loading ? (
+        <div className="flex justify-center items-center h-[30vh]">
+          <BallTriangle
+            height={100}
+            width={100}
+            radius={5}
+            color="#7B1FA2"
+            ariaLabel="ball-triangle-loading"
+            wrapperClass={{}}
+            wrapperStyle=""
+            visible={true}
+          />
         </div>
-      </div>
-    ))}
-    
-    </Slider>
+      ) : (
+        <Slider className="w-[95%] mx-auto" {...settings}>
+          {loading}
 
-   }
-   
-  
-
-   </>
+          {topViews?.map((item) => (
+            <div key={item._id} className="slide">
+              <img
+                className="w-full mx-auto h-[80vh] object-cover "
+                src={item.image}
+                alt="Slide 2"
+              />
+              <div className="text-overlay ">
+                <h2 className="text-4xl font-bold">{item.title}</h2>
+                <p className="text-2xl font-bold">{item.publisher}</p>
+              </div>
+            </div>
+          ))}
+        </Slider>
+      )}
+    </>
   );
 };
 
