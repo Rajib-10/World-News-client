@@ -4,6 +4,7 @@ import AllCard from "./AllCard";
 import PremiumCards from "./PremiumCards";
 import { useState } from "react";
 import { BallTriangle } from "react-loader-spinner";
+import Marquee from "react-fast-marquee";
 
 const AllArticles = () => {
   const [loading, setLoading] = useState(true);
@@ -28,6 +29,26 @@ const AllArticles = () => {
 
   return (
     <div className="my-10">
+
+<div className="marquee-container hidden md:block">
+  <Marquee speed="120">
+    <p className="marquee-item mx-4">
+      🚨 <span className="text-xl font-medium text-red-500">Breaking News:</span> Scientists Make Groundbreaking Discovery in Space Exploration!
+    </p>
+    <p className="marquee-item mx-4">
+      🏀 <span className="text-green-500 text-xl font-medium">Sports Update:</span> Exciting Match Results – Thrilling Overtime Victory!
+    </p>
+    <p className="marquee-item mx-4">
+      🌍 <span className="text-blue-500 text-xl font-medium">World Affairs:</span> Leaders Gather for Summit to Address Global Climate Crisis.
+    </p>
+    <p className="marquee-item mx-4">
+      🎬 <span className="text-purple-500 text-xl font-medium">Entertainment Buzz:</span> Highly Anticipated Movie Release Breaks Box Office Records!
+    </p>
+  </Marquee>
+</div>
+
+
+
       <div className="flex justify-between my-6 flex-col md:flex-row">
         <h1 className="text-3xl text-center text-[#7B1FA2] px-10">
           All Articles

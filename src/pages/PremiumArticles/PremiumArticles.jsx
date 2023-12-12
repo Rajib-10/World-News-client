@@ -19,7 +19,25 @@ const PremiumArticles = () => {
 
   return (
     <div className="my-10">
-      <h1 className="text-3xl text-center text-[#7B1FA2]">Premium Articles</h1>
+      
+
+
+{/* premium Banner  */}
+
+<div className="mb-6">
+<div className="hero min-h-[70vh]" style={{backgroundImage: 'url(https://i.ibb.co/HzvfLgW/5142.jpg)'}}>
+  <div className="hero-overlay bg-opacity-60"></div>
+  <div className="hero-content text-center text-neutral-content">
+    <div className="max-w-md">
+      <h1 className="mb-5 text-5xl font-bold">Hello Premium members</h1>
+      <p className="mb-5">Enjoy Premium Articles and Stay Connected With World NEWS.</p>
+     
+    </div>
+  </div>
+</div>
+</div>
+
+<h1 className="text-3xl text-center text-[#7B1FA2]">Premium Articles</h1>
       {loading ? (
         <div className="flex justify-center items-center h-[70vh]">
           <BallTriangle
