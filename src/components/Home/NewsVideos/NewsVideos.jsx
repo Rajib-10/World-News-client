@@ -43,8 +43,6 @@ const NewsVideos = () => {
 
   const createVideoCard = ({ url, headline }) => {
     return (
-        
-        
       <div key={url} className="w-full ">
         <iframe
           src={url}
@@ -60,7 +58,7 @@ const NewsVideos = () => {
 
   return (
     <>
-    <h1 className="text-3xl text-center text-[#7B1FA2]">Today <span className="text-2xl text-indigo-700">
+    <h1 className="text-3xl text-center text-[#7B1FA2]">Today's <span className="text-2xl text-indigo-700">
           {text} <Cursor cursorStyle="<" />
         </span></h1>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-around  mt-8">
