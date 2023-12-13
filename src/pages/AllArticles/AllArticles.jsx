@@ -36,7 +36,7 @@ const AllArticles = () => {
       🚨 <span className="text-xl font-medium text-red-500">Breaking News:</span> Scientists Make Groundbreaking Discovery in Space Exploration!
     </p>
     <p className="marquee-item mx-4">
-      🏀 <span className="text-green-500 text-xl font-medium">Sports Update:</span> Exciting Match Results – Thrilling Overtime Victory!
+      🏀 <span className="text-green-500 text-xl font-medium">Sports Update:</span> Exciting Match Results. Thrilling Overtime Victory!
     </p>
     <p className="marquee-item mx-4">
       🌍 <span className="text-blue-500 text-xl font-medium">World Affairs:</span> Leaders Gather for Summit to Address Global Climate Crisis.
