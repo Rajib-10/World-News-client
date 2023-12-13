@@ -55,13 +55,13 @@ const Home = () => {
 
       <div className="fixed left-1 top-1/2 transform -translate-y-1/2">
         <a  href="#" >
-          <FaInstagram class="mb-3 bg-gradient-to-r from-purple-600 via-blue-500 to-pink-500  rounded-full"size={26} />
+          <FaInstagram class="mb-3 bg-gradient-to-r from-purple-600 via-blue-500 to-pink-500  rounded-full"size={25} />
         </a>
         <a href="#" >
-          <FaLinkedin className="text-[#0077B5]" size={26} />
+          <FaLinkedin className="text-[#0077B5]" size={25} />
         </a>
         <a  href="#">
-          <FaFacebook className="mt-3 text-[#1877F2]" size={26} />
+          <FaFacebook className="mt-3 text-[#1877F2]" size={25} />
         </a>
       </div>
 
