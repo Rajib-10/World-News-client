@@ -21,15 +21,12 @@ const PremiumArticles = () => {
     <div className="my-10">
       
 
-
-{/* premium Banner  */}
-
 <div className="mb-6">
 <div className="hero min-h-[70vh]" style={{backgroundImage: 'url(https://i.ibb.co/HzvfLgW/5142.jpg)'}}>
   <div className="hero-overlay bg-opacity-60"></div>
   <div className="hero-content text-center text-neutral-content">
     <div className="max-w-md">
-      <h1 className="mb-5 text-5xl font-bold">Hello Premium members</h1>
+      <h1 className="mb-5 text-5xl font-bold">Premium News here</h1>
       <p className="mb-5">Enjoy Premium Articles and Stay Connected With World NEWS.</p>
      
     </div>
