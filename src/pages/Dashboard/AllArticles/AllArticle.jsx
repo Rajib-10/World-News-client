@@ -3,6 +3,7 @@ import useAxiosSecure from "../../../Hook/useAxiosSecure"
 import AllArticleCard from "./AllArticleCard";
 import { useState } from "react";
 import { BallTriangle } from "react-loader-spinner";
+import { Flip } from "react-awesome-reveal";
 
 const AllArticle = () => {
     const axiosSecure = useAxiosSecure()
@@ -19,8 +20,10 @@ const AllArticle = () => {
 
     return (
         <div>
-            <h1 className="mb-10 text-center text-3xl font-semibold text-[#7B1FA2]">Total Articles-{articles.length}</h1>
+<Flip>
+<h1 className="mb-10 text-center text-3xl font-semibold text-[#7B1FA2]">Total Articles-{articles.length}</h1>
 
+</Flip>
         { 
             loading ? 
 

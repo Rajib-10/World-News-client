@@ -5,6 +5,7 @@ import { TbPremiumRights } from "react-icons/tb";
 import CountUp from "react-countup";
 import useAxiosPublic from "../../../Hook/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
+import {  JackInTheBox } from "react-awesome-reveal";
 
 const CountingAllUsers = () => {
   const axiosPublic = useAxiosPublic();
@@ -35,6 +36,7 @@ const CountingAllUsers = () => {
       <h1 className="text-3xl text-center text-[#7B1FA2]">All <span className="text-2xl text-indigo-700">
           {text} <Cursor cursorStyle="<" />
         </span></h1>
+      <JackInTheBox>
       <div className="flex flex-col md:flex-row  justify-between items-center lg:w-[90%] mx-auto bg-base-300 rounded-lg  p-8 gap-8">
         <div className="flex items-center gap-7">
           <div>
@@ -76,6 +78,7 @@ const CountingAllUsers = () => {
           </div>
         </div>
       </div>
+      </JackInTheBox>
     </div>
   );
 };

@@ -8,6 +8,7 @@ import { GrUpgrade } from "react-icons/gr";
 import { TiDelete } from "react-icons/ti";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Flip, Slide} from "react-awesome-reveal";
 
 const MyArticles = () => {
   const { user } = useAuth();
@@ -48,9 +49,11 @@ const MyArticles = () => {
 
   return (
     <div className="my-10">
-      <h1 className="text-3xl text-center text-[#7B1FA2]">My Articles</h1>
+     <Flip> <h1 className="text-3xl text-center text-[#7B1FA2]">My Articles</h1></Flip>
+     
      {
       articles.length > 0 ?  <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-3">
+      
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
@@ -79,7 +82,7 @@ const MyArticles = () => {
           </tr>
         </thead>
         <tbody>
-          {articles?.map((item, idx) => (
+         {articles?.map((item, idx) => (
             <tr
               key={item?._id}
               className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
@@ -131,11 +134,14 @@ const MyArticles = () => {
           ))}
         </tbody>
       </table>
+     
     </div>
     : 
-    <div className="text 2xl text-red-600 font-medium flex justify-center items-center h-[70vh]">
+    <Slide direction="right">
+      <div className="text 2xl text-red-600 font-medium flex justify-center items-center h-[70vh]">
       <h1>Hey <span className="text-3xl font-bold" >{user?.displayName}</span>, you did not added any articles yet!!</h1>
     </div>
+    </Slide>
      }
     </div>
   );

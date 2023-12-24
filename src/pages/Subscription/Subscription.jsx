@@ -1,10 +1,14 @@
+import { Flip, Slide, Zoom } from "react-awesome-reveal";
 import SubscriptionOption from "./SubscriptionOption";
 
 const Subscription = () => {
   return (
     <div className="my-10">
-      <h1 className="text-3xl text-center text-[#7B1FA2] my-4">Subscription</h1>
-      <div className="p-6 py-12 dark:bg-violet-400 dark:text-gray-900">
+     <Flip>
+     <h1 className="text-3xl text-center text-[#7B1FA2] my-4">Subscription</h1>
+     </Flip>
+    <Zoom>
+    <div className="p-6 py-12 dark:bg-violet-400 dark:text-gray-900">
         <div className="container mx-auto">
           <div className="flex flex-col lg:flex-row items-center justify-between">
             <img
@@ -20,7 +24,10 @@ const Subscription = () => {
           </div>
         </div>
       </div>
+    </Zoom>
+      <Slide direction="right">
       <SubscriptionOption />
+      </Slide>
     </div>
   );
 };

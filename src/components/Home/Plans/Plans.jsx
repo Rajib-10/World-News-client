@@ -1,3 +1,4 @@
+import { Bounce, Zoom } from "react-awesome-reveal";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 
 const Plans = () => {
@@ -17,9 +18,12 @@ const Plans = () => {
         </span></h1>
         <section className="py-2">
 	<div className="container px-4 mx-auto">
+		<Bounce>
 		<div className="max-w-2xl mx-auto mb-16 text-center">
 			<h2 className="text-xl font-bold lg:text-2xl">Choose your best plan</h2>
 		</div>
+		</Bounce>
+		<Zoom>
 		<div className="flex flex-wrap items-stretch -mx-4">
 			<div className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0">
 				<div className="flex flex-grow flex-col p-6 space-y-6 rounded shadow sm:p-8 dark:bg-gray-100">
@@ -134,6 +138,7 @@ const Plans = () => {
 				</div>
 			</div>
 		</div>
+		</Zoom>
 	</div>
 </section>
         </div>

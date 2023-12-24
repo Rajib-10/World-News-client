@@ -2,6 +2,7 @@
 
 import { Link } from "react-router-dom";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
+import {  Zoom } from "react-awesome-reveal";
 
 const AllCard = ({ article }) => {
   const axiosPublic = useAxiosPublic()
@@ -20,9 +21,11 @@ const AllCard = ({ article }) => {
   return (
     <div>
       <div className="relative flex flex-col text-gray-700 bg-white shadow-md  rounded-xl bg-clip-border">
+        <Zoom>
         <div className="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white h-[250px] rounded-xl bg-clip-border">
           <img src={image} className="object-cover w-full h-full" />
         </div>
+        </Zoom>
         <div className="p-6">
           <div className="flex items-center justify-between mb-2">
             <p className="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">

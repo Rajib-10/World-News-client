@@ -5,6 +5,9 @@ import PremiumCards from "./PremiumCards";
 import { useState } from "react";
 import { BallTriangle } from "react-loader-spinner";
 import Marquee from "react-fast-marquee";
+import { Slide } from "react-awesome-reveal";
+
+
 
 const AllArticles = () => {
   const [loading, setLoading] = useState(true);
@@ -50,10 +53,13 @@ const AllArticles = () => {
 
 
       <div className="flex justify-between my-6 flex-col md:flex-row">
+        <Slide direction="left">
         <h1 className="text-3xl text-center text-[#7B1FA2] px-10">
           All Articles
         </h1>
+        </Slide>
 
+        <Slide direction="right">
         <div className="relative flex h-10 w-full min-w-[200px] max-w-[24rem]">
           <input
             onChange={(e) => setSearch(e.target.value)}
@@ -74,6 +80,7 @@ const AllArticles = () => {
             Search by title
           </label>
         </div>
+        </Slide>
       </div>
       {loading ? (
         <div className="flex justify-center items-center h-[70vh]">

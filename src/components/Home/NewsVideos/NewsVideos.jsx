@@ -1,3 +1,4 @@
+import {  Zoom } from "react-awesome-reveal";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 
 const NewsVideos = () => {
@@ -61,9 +62,11 @@ const NewsVideos = () => {
     <h1 className="text-3xl text-center text-[#7B1FA2]">Today's <span className="text-2xl text-indigo-700">
           {text} <Cursor cursorStyle="<" />
         </span></h1>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-around  mt-8">
+  <Zoom right>
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-around  mt-8">
       {videoData.map(createVideoCard)}
     </div>
+  </Zoom>
     </>
   );
 };

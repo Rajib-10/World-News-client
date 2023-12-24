@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { Button } from "@mui/material";
 import { useState } from "react";
 import { BallTriangle } from "react-loader-spinner";
+import {   Slide } from "react-awesome-reveal";
 
 
 const AllUser = () => {
@@ -74,7 +75,9 @@ const AllUser = () => {
 
   return (
     <div className="text-3xl font-medium lg:text-right text-[#7B1FA2] ">
-      Total Users: {users?.length}
+     <Slide direction="right">
+     <h1>Total Users: {users?.length}</h1>
+     </Slide>
       {
         loading ? 
 
@@ -93,7 +96,8 @@ const AllUser = () => {
 
         :
 
-        <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-3">
+       <Slide direction="right">
+         <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-3">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
@@ -163,6 +167,7 @@ const AllUser = () => {
           </tbody>
         </table>
       </div>
+       </Slide>
 
       }
       

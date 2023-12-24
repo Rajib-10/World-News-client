@@ -7,6 +7,7 @@ import moment from "moment";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
+import { Flip } from "react-awesome-reveal";
 
 
 const image_hosting_key = '6ca08b587b375113f32a2be549ed3bf0';
@@ -96,7 +97,9 @@ const AddArticles = () => {
 
   return (
     <div className="my-10">
+      <Flip>
       <h1 className="text-3xl text-center text-[#7B1FA2]">Add Articles</h1>
+      </Flip>
       <div className="flex justify-center items-center h-[70vh]">
         <form className="w-[70%] lg:w-[50%]" onSubmit={handleSubmit}>
           <TextField

@@ -3,6 +3,7 @@ import useAuth from "../../../Hook/useAuth";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import Chart from "react-google-charts";
 import PieChart from "./PieChart";
+import {  Bounce, Slide, Zoom } from "react-awesome-reveal";
 
 const DashboardHome = () => {
   const { user } = useAuth();
@@ -35,12 +36,15 @@ const DashboardHome = () => {
 
   return (
     <div>
+      <Slide direction="right">
       <h1 className="text-xl md:text-2xl text-[#7B1FA2]">
         Hey <span className="text-xl md:text-3xl font-bold">{user?.displayName} </span>warm
         Welcome to Dashboard
       </h1>
+      </Slide>
 
       <section className="p-6 my-6 dark:bg-gray-800 dark:text-gray-100">
+        <Bounce>
         <div className="container grid grid-cols-1 gap-6 mx-auto sm:grid-cols-2 xl:grid-cols-4">
           <div className="flex justify-center p-4 space-x-4 rounded-lg md:space-x-6 dark:bg-gray-900 dark:text-gray-100">
             <div className="flex  flex-col justify-center align-middle">
@@ -75,9 +79,11 @@ const DashboardHome = () => {
             </div>
           </div>
         </div>
+        </Bounce>
       </section>
 
       <div className="flex justify-around items-center flex-col lg:flex-row">
+        
         <div className="w-full md:w-1/2">
           <Chart
             chartType="Bar"
@@ -87,8 +93,10 @@ const DashboardHome = () => {
             height="400px"
           ></Chart>
         </div>
+        
 
-        <div className="w-full md:w-1/2">
+       <Slide direction="right">
+       <div className="w-full md:w-1/2">
           <Chart
             chartType="LineChart"
             data={chartData}
@@ -97,8 +105,9 @@ const DashboardHome = () => {
             height="400px"
           ></Chart>
         </div>
+       </Slide>
       </div>
-      <PieChart />
+     <Zoom> <PieChart /></Zoom>
     </div>
   );
 };

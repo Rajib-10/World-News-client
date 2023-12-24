@@ -61,9 +61,11 @@ const AddPublisher = () => {
 
   return (
     <div>
-      <h1 className="text-center text-3xl font-semibold text-[#7B1FA2] lg:pt-28">
+   
+    <h1 className="text-center text-3xl font-semibold text-[#7B1FA2] lg:pt-28">
         Add Publisher
       </h1>
+   
 
       <div className="flex justify-center ">
       <form  className="w-[80%] lg:w-[50%]" onSubmit={handleSubmit}>

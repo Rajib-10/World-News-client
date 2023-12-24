@@ -3,6 +3,8 @@
 import { Link } from "react-router-dom";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
 import useAuth from "../../Hook/useAuth";
+import { FaCrown } from "react-icons/fa";
+import { Zoom } from "react-awesome-reveal";
 
 const PremiumCard = ({ article }) => {
   const {user} = useAuth()
@@ -21,13 +23,15 @@ const PremiumCard = ({ article }) => {
   };
   return (
     <div>
-      <div className="relative flex flex-col text-gray-700 bg-blue-50 shadow-md  rounded-xl bg-clip-border">
+      <div className="relative flex flex-col text-gray-700 shadow-md  rounded-xl bg-clip-border">
+        <Zoom>
         <div className="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white h-[250px] rounded-xl bg-clip-border">
-          <h1 className="text-violet-700 font-bold absolute -top-1 right-0">
-            premium
+          <h1 className="text-orange-500 font-bold absolute top-1 right-1 z-20">
+            <FaCrown size={22} />
           </h1>
           <img src={image} className="object-cover w-full h-full" />
         </div>
+        </Zoom>
         <div className="p-6">
           <div className="flex items-center justify-between mb-2">
             <p className="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">

@@ -7,6 +7,7 @@ import { Avatar, Box, Button, Modal, TextField, Tooltip } from "@mui/material";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import { useState } from "react";
+import {  Fade } from "react-awesome-reveal";
 
 const style = {
   position: "absolute",
@@ -144,6 +145,7 @@ const AllArticleCard = ({ article, refetch }) => {
 
   return (
     <div>
+      <Fade>
       <div className="relative flex w-full  flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
         <div className="flex justify-between items-center flex-col lg:flex-row">
           <div className="flex items-center  gap-1">
@@ -215,6 +217,7 @@ const AllArticleCard = ({ article, refetch }) => {
           </div>
         </div>
       </div>
+      </Fade>
       <div>
         <Modal
           open={open}

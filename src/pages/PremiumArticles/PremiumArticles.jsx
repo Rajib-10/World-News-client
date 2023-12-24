@@ -3,6 +3,7 @@ import useAxiosPublic from "../../Hook/useAxiosPublic";
 import PremiumCard from "./PremiumCard";
 import { useState } from "react";
 import { BallTriangle } from "react-loader-spinner";
+import { Flip, Zoom } from "react-awesome-reveal";
 
 const PremiumArticles = () => {
   const [loading, setLoading] = useState(true);
@@ -22,6 +23,7 @@ const PremiumArticles = () => {
       
 
 <div className="mb-6">
+<Zoom>
 <div className="hero min-h-[70vh]" style={{backgroundImage: 'url(https://i.ibb.co/HzvfLgW/5142.jpg)'}}>
   <div className="hero-overlay bg-opacity-60"></div>
   <div className="hero-content text-center text-neutral-content">
@@ -32,9 +34,10 @@ const PremiumArticles = () => {
     </div>
   </div>
 </div>
+</Zoom>
 </div>
 
-<h1 className="text-3xl text-center text-[#7B1FA2]">Premium Articles</h1>
+<Flip><h1 className="text-3xl text-center text-[#7B1FA2]">Premium Articles</h1></Flip>
       {loading ? (
         <div className="flex justify-center items-center h-[70vh]">
           <BallTriangle

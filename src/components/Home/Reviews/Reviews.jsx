@@ -1,3 +1,4 @@
+import { Slide } from "react-awesome-reveal";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 
 const Reviews = () => {
@@ -18,6 +19,7 @@ const Reviews = () => {
         </span></h1>
 
       <div className="flex justify-evenly items-center flex-col md:flex-row">
+        <Slide direction="left">
         <div className="flex flex-col max-w-xl p-8 shadow-sm rounded-xl lg:p-12  ">
           <div className="flex flex-col items-center w-full">
             <h2 className="text-3xl font-semibold text-center">
@@ -114,8 +116,10 @@ const Reviews = () => {
           </div>
           
         </div>
+        </Slide>
 
-        <div className="flex flex-col max-w-xl p-8 shadow-sm rounded-xl lg:p-12">
+ <Slide direction="right">
+ <div className="flex flex-col max-w-xl p-8 shadow-sm rounded-xl lg:p-12">
 	<div className="flex flex-col w-full">
 		<h2 className="text-3xl font-semibold text-center">Viewer reviews</h2>
 		<div className="flex flex-wrap items-center mt-2 mb-1 space-x-2">
@@ -188,6 +192,7 @@ const Reviews = () => {
 		</div>
 	</div>
 </div>
+ </Slide>
       </div>
     </div>
   );
